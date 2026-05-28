@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="LaTeX 수식과 한글(HWP) 수식 문법을 상호 변환하는 간단한 웹 도구" />
+    <title>LaTeX ↔ 한글 수식 변환기</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="assets/app.js"></script>
+  </head>
+  <body data-app>
+    <main class="shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero__content">
+          <p class="eyebrow">hwp-eqn-ts 기반 · 브라우저에서 바로 변환</p>
+          <h1 id="page-title">LaTeX ↔ 한글(HWP) 수식 변환기</h1>
+          <p class="hero__lead">
+            LaTeX 수식을 한글 수식 입력 문법으로, 한글 수식 문법을 다시 LaTeX로 변환합니다.
+            설치 없이 HTML 파일을 열어 빠르게 복사해 쓰는 것을 목표로 했습니다.
+          </p>
+        </div>
+        <div class="hero__card" aria-label="지원 기능 요약">
+          <span class="pulse" aria-hidden="true"></span>
+          <strong>지원 예시</strong>
+          <span>분수 · 적분 · 합 · 루트 · 행렬 · cases · 장식 기호</span>
+        </div>
+      </section>
+
+      <section class="converter" aria-label="수식 변환기">
+        <div class="toolbar">
+          <div class="direction-toggle" role="group" aria-label="변환 방향">
+            <button type="button" data-direction="latex-to-hwp" aria-pressed="true">LaTeX → 한글 수식</button>
+            <button type="button" data-direction="hwp-to-latex" aria-pressed="false">한글 수식 → LaTeX</button>
+          </div>
+          <button class="ghost-button" type="button" data-swap title="현재 결과를 입력으로 넣고 방향 전환">방향 바꾸기</button>
+        </div>
+
+        <div class="panels">
+          <article class="panel panel--input">
+            <div class="panel__header">
+              <div>
+                <span class="panel__kicker">입력</span>
+                <h2 data-source-label>LaTeX</h2>
+              </div>
+              <span class="metric"><strong data-char-count>0</strong> chars</span>
+            </div>
+            <p class="panel__hint" data-source-hint></p>
+            <textarea data-input spellcheck="false" aria-label="변환할 수식 입력"></textarea>
+            <div class="sample-row" data-samples aria-label="예제 선택"></div>
+          </article>
+
+          <article class="panel panel--output">
+            <div class="panel__header">
+              <div>
+                <span class="panel__kicker">결과</span>
+                <h2 data-target-label>한글 수식</h2>
+              </div>
+              <span class="metric"><strong data-token-count>0</strong> tokens</span>
+            </div>
+            <p class="panel__hint" data-target-hint></p>
+            <textarea data-output readonly spellcheck="false" aria-label="변환 결과"></textarea>
+            <div class="action-row">
+              <button class="primary-button" type="button" data-convert>변환하기</button>
+              <button class="secondary-button" type="button" data-copy>결과 복사</button>
+              <button class="ghost-button" type="button" data-clear>비우기</button>
+            </div>
+          </article>
+        </div>
+
+        <p class="status" data-status data-tone="neutral" role="status">변환할 수식을 입력하거나 예제를 선택하세요.</p>
+      </section>
+
+      <section class="guide" aria-labelledby="guide-title">
+        <div>
+          <p class="eyebrow">빠른 문법 힌트</p>
+          <h2 id="guide-title">자주 쓰는 대응표</h2>
+        </div>
+        <div class="syntax-grid">
+          <div class="syntax-card"><code>\frac{x}{y}</code><span>↔</span><code>x over y</code></div>
+          <div class="syntax-card"><code>\sqrt{x}</code><span>↔</span><code>sqrt x</code></div>
+          <div class="syntax-card"><code>\int_{1}^{2} {x}</code><span>↔</span><code>int_1^2 { { x } }</code></div>
+          <div class="syntax-card"><code>\begin{pmatrix} ...</code><span>↔</span><code>pmatrix{1 &amp; 2 # 3 &amp; 4}</code></div>
+        </div>
+        <p class="support-note">
+          변환은 <code>hwp-eqn-ts</code>가 지원하는 수식 문법을 기준으로 합니다.
+          해석하지 못한 토큰이나 지원하지 않는 문자는 오류로 표시해 결과가 조용히 잘리는 일을 막습니다.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

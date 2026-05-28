@@ -1,0 +1,17 @@
+{
+  "name": "latextohwpqn",
+  "version": "1.0.0",
+  "description": "Static web converter between LaTeX equations and Hangul(HWP) equation syntax, based on hwp-eqn-ts.",
+  "private": true,
+  "scripts": {
+    "build": "esbuild src/ui.js --bundle --minify --format=iife --global-name=HwpEqnSite --outfile=assets/app.js --legal-comments=linked",
+    "test": "node --test tests/*.test.js",
+    "verify": "npm run build && npm test"
+  },
+  "dependencies": {
+    "hwp-eqn-ts": "1.1.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.0"
+  }
+}
